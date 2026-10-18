@@ -1,0 +1,1499 @@
+/* =====================================================================
+   CAPWARE — NAVBAR
+   Modern glass · Gradient · Fully responsive
+   ===================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
+
+/* ---------------------------------------------------------------------
+   1. Tokens
+   --------------------------------------------------------------------- */
+.cap-navbar {
+  --cap-ink:       #eef3ff;
+  --cap-muted:     #97a5c4;
+  --cap-accent:    #4f8cff;
+  --cap-accent-2:  #7c5cff;
+  --cap-cyan:      #22d3ee;
+  --cap-green:     #34d399;
+  --cap-grad:      linear-gradient(120deg, #4f8cff 0%, #7c5cff 55%, #22d3ee 100%);
+  --cap-grad-2:    linear-gradient(115deg, #4f8cff, #7657f6 52%, #4f8cff);
+  --cap-surface:   rgba(9, 14, 28, 0.72);
+  --cap-surface-2: rgba(7, 11, 22, 0.94);
+  --cap-border:    rgba(255, 255, 255, 0.09);
+  --cap-border-2:  rgba(255, 255, 255, 0.16);
+  --cap-glow:      rgba(79, 140, 255, 0.35);
+  --cap-shadow-pop: 0 30px 80px rgba(0, 0, 0, 0.6);
+
+  position: sticky;
+  top: 0;
+  z-index: 1050;
+  isolation: isolate;
+  width: 100%;
+  padding: 12px 0;
+  background: transparent;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  transition: padding 0.28s ease;
+}
+
+.cap-navbar *,
+.cap-navbar *::before,
+.cap-navbar *::after {
+  box-sizing: border-box;
+}
+
+/* Glass layer */
+.cap-navbar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--cap-surface);
+  -webkit-backdrop-filter: blur(22px) saturate(165%);
+  backdrop-filter: blur(22px) saturate(165%);
+  box-shadow:
+    inset 0 -1px 0 rgba(151, 174, 225, 0.12),
+    0 12px 38px rgba(0, 0, 0, 0.12);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Top gradient shimmer */
+.cap-navbar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: -1;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #4f8cff 22%,
+    #8b5cf6 55%,
+    #2dd4bf 82%,
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: capNavShimmer 8s linear infinite;
+}
+
+@keyframes capNavShimmer {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+.cap-navbar.is-scrolled {
+  padding: 8px 0;
+}
+
+.cap-navbar.is-scrolled::after {
+  background: var(--cap-surface-2);
+  box-shadow:
+    inset 0 -1px 0 var(--cap-border),
+    0 14px 44px rgba(0, 0, 0, 0.55);
+}
+
+/* Container */
+.cap-container {
+  position: relative;
+  width: min(1720px, calc(100% - 64px));
+  max-width: 1720px;
+  min-width: 0;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(12px, 1.6vw, 28px);
+}
+
+/* ---------------------------------------------------------------------
+   2. Logo
+   --------------------------------------------------------------------- */
+.cap-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  flex-shrink: 1;
+  min-width: 0;
+  max-width: 36%;
+  transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.cap-logo:hover {
+  transform: translateY(-1px) scale(1.015);
+}
+
+.cap-logo-image {
+  display: block;
+  width: clamp(175px, 18vw, 285px);
+  max-width: 100%;
+  height: auto;
+  max-height: 72px;
+  object-fit: contain;
+  object-position: left center;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  filter: drop-shadow(0 5px 18px rgba(79, 140, 255, 0.10));
+  transition: width 0.28s ease, max-height 0.28s ease, filter 0.28s ease;
+}
+
+.cap-logo:hover .cap-logo-image {
+  filter: drop-shadow(0 6px 22px rgba(79, 140, 255, 0.24));
+}
+
+.cap-navbar.is-scrolled .cap-logo-image {
+  width: clamp(165px, 16vw, 258px);
+  max-height: 62px;
+}
+
+/* ---------------------------------------------------------------------
+   3. Menu wrapper
+   --------------------------------------------------------------------- */
+.cap-menu {
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 1vw, 18px);
+  min-width: 0;
+  flex: 1 1 auto;
+  justify-content: flex-end;
+}
+
+.cap-menu-head {
+  display: none;
+}
+
+/* ---------------------------------------------------------------------
+   4. Nav links
+   --------------------------------------------------------------------- */
+.cap-nav-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: clamp(0px, 0.25vw, 5px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  min-width: 0;
+}
+
+.cap-nav-list > li {
+  min-width: 0;
+}
+
+.cap-nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 11px clamp(8px, 0.9vw, 14px);
+  border: 0;
+  border-radius: 11px;
+  background: transparent;
+  font-family: inherit;
+  font-size: clamp(0.78rem, 0.85vw, 0.9rem);
+  font-weight: 600;
+  color: var(--cap-muted);
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.22s ease, background 0.22s ease, transform 0.22s ease;
+}
+
+.cap-nav-link::before {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  z-index: -1;
+  border-radius: 8px;
+  background: linear-gradient(120deg, rgba(79, 140, 255, 0.12), rgba(124, 92, 255, 0.10));
+  opacity: 0;
+  transform: scale(0.96);
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+.cap-nav-link:hover,
+.cap-nav-link:focus-visible {
+  color: #ffffff;
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.cap-nav-link:hover::before,
+.cap-nav-link:focus-visible::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.cap-nav-link.active {
+  color: #ffffff;
+}
+
+.cap-nav-link.active::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 4px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--cap-grad);
+  box-shadow: 0 0 10px rgba(79, 140, 255, 0.65);
+}
+
+/* ---------------------------------------------------------------------
+   5. Dropdowns
+   --------------------------------------------------------------------- */
+.cap-dropdown {
+  position: relative;
+}
+
+.cap-dropdown-toggle {
+  background: transparent;
+}
+
+.cap-caret {
+  font-size: 0.7rem;
+  opacity: 0.75;
+  transition: transform 0.25s ease;
+}
+
+.cap-dropdown:hover .cap-caret,
+.cap-dropdown.open .cap-caret {
+  transform: rotate(180deg);
+}
+
+.cap-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 50%;
+  width: min(720px, calc(100vw - 32px));
+  max-width: calc(100vw - 32px);
+  padding: 12px;
+  border: 1px solid rgba(151, 174, 225, 0.17);
+  border-radius: 20px;
+  background: rgba(7, 12, 26, 0.97);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+  backdrop-filter: blur(22px) saturate(160%);
+  box-shadow: var(--cap-shadow-pop), 0 0 0 1px rgba(79, 140, 255, 0.045) inset;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate(-50%, 12px) scale(0.98);
+  transition: opacity 0.24s ease, transform 0.24s ease, visibility 0.24s;
+  z-index: 20;
+  overflow: hidden;
+}
+
+.cap-dropdown-menu::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 40px;
+  right: 40px;
+  height: 1px;
+  background: var(--cap-grad);
+  opacity: 0.6;
+}
+
+.cap-dropdown-menu::after {
+  content: "";
+  position: absolute;
+  top: -14px;
+  left: 0;
+  right: 0;
+  height: 14px;
+}
+
+.cap-dropdown:hover .cap-dropdown-menu,
+.cap-dropdown.open .cap-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate(-50%, 0) scale(1);
+}
+
+.cap-dropdown-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(180px, 220px);
+  gap: 12px;
+}
+
+.cap-dd-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  min-width: 0;
+}
+
+.cap-dd-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 12px;
+  border-radius: 12px;
+  text-decoration: none;
+  min-width: 0;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.cap-dd-item:hover {
+  background: rgba(79, 140, 255, 0.13);
+  transform: translateX(2px);
+}
+
+.cap-dd-icon {
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(79, 140, 255, 0.22);
+  border-radius: 10px;
+  background: rgba(79, 140, 255, 0.12);
+  color: #7fb0ff;
+  font-size: 1.05rem;
+  transition: background 0.25s ease, color 0.25s ease,
+              border-color 0.25s ease, transform 0.25s ease;
+}
+
+.cap-dd-item:hover .cap-dd-icon {
+  background: var(--cap-grad);
+  border-color: transparent;
+  color: #ffffff;
+  transform: rotate(-6deg) scale(1.06);
+}
+
+.cap-dd-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.cap-dd-title {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--cap-ink);
+  overflow-wrap: anywhere;
+}
+
+.cap-dd-desc {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.76rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--cap-muted);
+  overflow-wrap: anywhere;
+}
+
+.cap-dd-arrow {
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  color: var(--cap-muted);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+
+.cap-dd-item:hover .cap-dd-arrow {
+  opacity: 1;
+  transform: translateX(0);
+  color: #ffffff;
+}
+
+/* Preview panel */
+.cap-dd-preview {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 18px 16px;
+  border: 1px solid rgba(79, 140, 255, 0.18);
+  border-radius: 14px;
+  background:
+    radial-gradient(280px 140px at 100% 0%, rgba(124, 92, 255, 0.22), transparent 60%),
+    linear-gradient(180deg, rgba(79, 140, 255, 0.1), rgba(79, 140, 255, 0.02));
+  overflow: hidden;
+}
+
+.cap-dd-preview::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 22px 22px;
+  -webkit-mask-image: radial-gradient(ellipse at 30% 30%, #000 30%, transparent 80%);
+  mask-image: radial-gradient(ellipse at 30% 30%, #000 30%, transparent 80%);
+  pointer-events: none;
+}
+
+.cap-dd-preview > * {
+  position: relative;
+  z-index: 1;
+}
+
+.cap-dd-preview-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(34, 211, 238, 0.12);
+  border: 1px solid rgba(34, 211, 238, 0.28);
+  color: var(--cap-cyan);
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.cap-dd-preview-tag i {
+  font-size: 0.7rem;
+}
+
+.cap-dd-preview-title {
+  margin: 14px 0 8px;
+  font-size: 0.98rem;
+  font-weight: 800;
+  line-height: 1.3;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
+}
+
+.cap-dd-preview-text {
+  margin: 0 0 16px;
+  font-size: 0.78rem;
+  line-height: 1.55;
+  color: var(--cap-muted);
+  overflow-wrap: anywhere;
+}
+
+.cap-dd-preview-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #7fb0ff;
+  text-decoration: none;
+  transition: gap 0.2s ease, color 0.2s ease;
+}
+
+.cap-dd-preview-cta:hover {
+  gap: 10px;
+  color: #ffffff;
+}
+
+/* ---------------------------------------------------------------------
+   6. CTA / Account buttons
+   --------------------------------------------------------------------- */
+.cap-menu-foot {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.cap-account-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.cap-nav-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px clamp(13px, 1.3vw, 22px);
+  border: 0;
+  border-radius: 999px;
+  background-image: var(--cap-grad-2);
+  background-size: 200% 100%;
+  background-position: 0 50%;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  box-shadow: 0 10px 28px rgba(79, 140, 255, 0.25),
+              inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  overflow: hidden;
+  transition: transform 0.22s ease, box-shadow 0.22s ease,
+              background-position 0.45s ease;
+}
+
+.cap-nav-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: skewX(-20deg);
+}
+
+.cap-nav-btn:hover::before {
+  animation: capShine 0.9s ease;
+}
+
+@keyframes capShine {
+  0%   { left: -150%; }
+  100% { left: 150%; }
+}
+
+.cap-nav-btn:hover {
+  color: #ffffff;
+  transform: translateY(-2px);
+  background-position: 100% 50%;
+  box-shadow: 0 15px 34px rgba(79, 140, 255, 0.34),
+              inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.cap-nav-btn i {
+  font-size: 0.85rem;
+  transition: transform 0.25s ease;
+}
+
+.cap-nav-btn:hover i {
+  transform: translateX(3px);
+}
+
+.cap-dashboard-btn {
+  text-decoration: none;
+}
+
+.cap-logout-btn {
+  border: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+/* Login link */
+.cap-login-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 999px;
+  color: #edf2ff;
+  background: rgba(255, 255, 255, 0.035);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: color 0.2s ease, background 0.2s ease,
+              border-color 0.2s ease, transform 0.2s ease;
+}
+
+.cap-login-link:hover {
+  color: #ffffff;
+  border-color: rgba(139, 166, 255, 0.35);
+  background: rgba(79, 140, 255, 0.10);
+  transform: translateY(-1px);
+}
+
+/* User chip */
+.cap-user-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 145px;
+  padding: 9px 12px;
+  border: 1px solid rgba(52, 211, 153, 0.22);
+  border-radius: 999px;
+  background: rgba(16, 185, 129, 0.075);
+  color: #d1fae5;
+}
+
+.cap-user-status-dot {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 8px;
+  border-radius: 50%;
+  background: var(--cap-green);
+  animation: capStatusPulse 2.2s ease-in-out infinite;
+}
+
+@keyframes capStatusPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.28); }
+  50%      { box-shadow: 0 0 0 5px rgba(52, 211, 153, 0); }
+}
+
+.cap-user-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* ---------------------------------------------------------------------
+   7. Burger
+   --------------------------------------------------------------------- */
+.cap-burger {
+  display: none;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border: 1px solid rgba(151, 174, 225, 0.18);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.055);
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.cap-burger:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.cap-burger.is-active {
+  background: rgba(79, 140, 255, 0.12);
+  border-color: rgba(79, 140, 255, 0.32);
+}
+
+.cap-burger-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 20px;
+}
+
+.cap-burger-lines i {
+  display: block;
+  height: 2px;
+  width: 100%;
+  border-radius: 2px;
+  background: #ffffff;
+  transition: transform 0.3s ease, opacity 0.25s ease, width 0.3s ease;
+}
+
+.cap-burger-lines i:nth-child(2) {
+  width: 70%;
+}
+
+.cap-burger.is-active .cap-burger-lines i:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.cap-burger.is-active .cap-burger-lines i:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-8px);
+}
+
+.cap-burger.is-active .cap-burger-lines i:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.cap-close {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--cap-border);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.cap-close:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* ---------------------------------------------------------------------
+   8. Overlay
+   --------------------------------------------------------------------- */
+.cap-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1055;
+  background: rgba(1, 4, 12, 0.72);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s;
+}
+
+.cap-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (min-width: 992px) {
+  .cap-overlay {
+    display: none;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   9. Responsive — Laptop
+   --------------------------------------------------------------------- */
+@media (max-width: 1300px) {
+  .cap-container {
+    width: calc(100% - 40px);
+    gap: 14px;
+  }
+
+  .cap-logo {
+    max-width: 30%;
+  }
+
+  .cap-logo-image {
+    width: clamp(165px, 20vw, 235px);
+    max-height: 60px;
+  }
+
+  .cap-navbar.is-scrolled .cap-logo-image {
+    width: clamp(155px, 18vw, 220px);
+    max-height: 56px;
+  }
+
+  .cap-nav-link {
+    padding: 10px 9px;
+    font-size: 0.82rem;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   10. Responsive — Tablet / Mobile drawer
+   --------------------------------------------------------------------- */
+@media (max-width: 991.98px) {
+  .cap-navbar {
+    padding: 10px 0;
+  }
+
+  .cap-container {
+    width: calc(100% - 28px);
+    gap: 12px;
+  }
+
+  .cap-burger {
+    display: grid;
+    flex: 0 0 44px;
+  }
+
+  .cap-logo {
+    flex: 1 1 auto;
+    max-width: calc(100% - 58px);
+  }
+
+  .cap-logo-image,
+  .cap-navbar:not(.is-scrolled) .cap-logo-image,
+  .cap-navbar.is-scrolled .cap-logo-image {
+    width: clamp(160px, 48vw, 245px);
+    max-height: 54px;
+  }
+
+  /* Drawer */
+  .cap-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: auto;
+    z-index: 1060;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 0;
+    width: min(390px, 92vw);
+    max-width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    min-height: 0;
+    padding: 18px 16px max(22px, env(safe-area-inset-bottom));
+    background: linear-gradient(155deg, #0b1223 0%, #070c19 68%, #0c1025 100%);
+    border-left: 1px solid rgba(151, 174, 225, 0.17);
+    box-shadow: -28px 0 90px rgba(0, 0, 0, 0.5);
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    transform: translateX(105%);
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform 0.3s ease, visibility 0.3s ease;
+  }
+
+  .cap-menu.is-open {
+    transform: translateX(0);
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .cap-menu-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 0 0 auto;
+    padding-bottom: 16px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid rgba(151, 174, 225, 0.14);
+  }
+
+  .cap-menu-title {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cap-muted);
+  }
+
+  /* Stacked nav */
+  .cap-nav-list {
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 3px;
+  }
+
+  .cap-nav-list > li,
+  .cap-dropdown,
+  .cap-nav-list > li > .cap-nav-link,
+  .cap-dropdown-toggle {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .cap-nav-link {
+    width: 100%;
+    min-height: 48px;
+    justify-content: space-between;
+    padding: 13px 14px;
+    font-size: 0.96rem;
+    color: #cdd8f0;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    transform: none;
+  }
+
+  .cap-nav-link:hover {
+    transform: none;
+  }
+
+  .cap-nav-link:hover::before {
+    opacity: 1;
+  }
+
+  .cap-nav-link.active {
+    color: #ffffff;
+    background: rgba(79, 140, 255, 0.14);
+  }
+
+  .cap-nav-link.active::after {
+    display: none;
+  }
+
+  /* Accordion */
+  .cap-dropdown-menu {
+    position: static;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 0;
+    padding: 0 8px;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.38s ease, padding 0.28s ease,
+                margin 0.28s ease, border-color 0.28s ease;
+  }
+
+  .cap-dropdown-menu::before,
+  .cap-dropdown-menu::after {
+    display: none;
+  }
+
+  .cap-dropdown-inner {
+    display: block;
+    width: 100%;
+  }
+
+  .cap-dd-preview {
+    display: none;
+  }
+
+  .cap-dropdown:hover .cap-dropdown-menu {
+    max-height: 0;
+    margin-top: 0;
+    padding: 0 8px;
+  }
+
+  .cap-dropdown.open .cap-dropdown-menu {
+    max-height: 900px;
+    margin-top: 6px;
+    padding: 8px;
+    border-color: var(--cap-border);
+  }
+
+  .cap-dd-list,
+  .cap-dd-list > li,
+  .cap-dd-item {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .cap-dd-item {
+    gap: 10px;
+    padding: 10px 8px;
+  }
+
+  .cap-dd-icon {
+    flex: 0 0 36px;
+    width: 36px;
+    height: 36px;
+    font-size: 0.98rem;
+  }
+
+  .cap-dd-arrow {
+    display: none;
+  }
+
+  .cap-dd-title,
+  .cap-dd-desc {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  /* Footer of drawer */
+  .cap-menu-foot {
+    flex: 0 0 auto;
+    width: 100%;
+    margin-top: auto;
+    padding-top: 20px;
+  }
+
+  .cap-account-actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .cap-user-indicator {
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
+  }
+
+  .cap-account-actions .cap-nav-btn,
+  .cap-account-actions .cap-login-link {
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  .cap-nav-btn {
+    padding: 14px 22px;
+    font-size: 0.95rem;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   11. Small phones
+   --------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .cap-container {
+    width: calc(100% - 22px);
+  }
+
+  .cap-logo-image,
+  .cap-navbar:not(.is-scrolled) .cap-logo-image,
+  .cap-navbar.is-scrolled .cap-logo-image {
+    width: clamp(145px, 53vw, 205px);
+    max-height: 48px;
+  }
+
+  .cap-burger {
+    flex-basis: 42px;
+    width: 42px;
+    height: 42px;
+  }
+
+  .cap-menu {
+    width: min(360px, 94vw);
+    padding-inline: 14px;
+  }
+
+  .cap-dd-desc {
+    font-size: 0.73rem;
+  }
+}
+
+/* Ultra narrow */
+@media (max-width: 350px) {
+  .cap-container {
+    width: calc(100% - 16px);
+    gap: 8px;
+  }
+
+  .cap-logo-image,
+  .cap-navbar:not(.is-scrolled) .cap-logo-image,
+  .cap-navbar.is-scrolled .cap-logo-image {
+    width: 138px;
+  }
+
+  .cap-menu {
+    width: 96vw;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   12. Global overflow safety
+   --------------------------------------------------------------------- */
+html,
+body,
+#root {
+  max-width: 100%;
+}
+
+body {
+  overflow-x: clip;
+}
+
+/* ---------------------------------------------------------------------
+   13. Reduced motion
+   --------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .cap-navbar *,
+  .cap-navbar *::before,
+  .cap-navbar *::after,
+  .cap-menu,
+  .cap-overlay {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}/* =====================================================================
+   MOBILE DRAWER — polish pass
+   Fixes: empty-feeling panel, weak link weight, dead space
+   ===================================================================== */
+
+@media (max-width: 991.98px) {
+
+  /* ---------- Drawer background: add depth + bottom glow ---------- */
+  .cap-menu {
+    background:
+      radial-gradient(120% 60% at 100% 0%, rgba(79, 140, 255, 0.14), transparent 60%),
+      radial-gradient(120% 60% at 0% 100%, rgba(124, 92, 255, 0.12), transparent 60%),
+      linear-gradient(155deg, #0b1223 0%, #070c19 65%, #0a1020 100%);
+    border-left: 1px solid rgba(151, 174, 225, 0.18);
+    box-shadow:
+      -28px 0 90px rgba(0, 0, 0, 0.55),
+      inset 1px 0 0 rgba(255, 255, 255, 0.04);
+    padding: 16px 14px max(18px, env(safe-area-inset-bottom));
+  }
+
+  /* ---------- Drawer head: brand identity ---------- */
+  .cap-menu-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-bottom: 14px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid rgba(151, 174, 225, 0.14);
+  }
+
+  .cap-menu-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .cap-menu-brand-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #4f8cff, #7c5cff);
+    box-shadow: 0 0 12px rgba(79, 140, 255, 0.65);
+    animation: capMenuDotPulse 2.4s ease-in-out infinite;
+  }
+
+  @keyframes capMenuDotPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(79, 140, 255, 0.35); }
+    50%      { box-shadow: 0 0 0 6px rgba(79, 140, 255, 0); }
+  }
+
+  .cap-menu-title {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #cbd6e2;
+  }
+
+  .cap-close {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    border: 1px solid rgba(151, 174, 225, 0.18);
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    font-size: 0.95rem;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .cap-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.22);
+    transform: rotate(90deg);
+  }
+
+  /* ---------- Nav list: card-style rows ---------- */
+  .cap-nav-list {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 6px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .cap-nav-list > li {
+    width: 100%;
+  }
+
+  /* Every link = a card */
+  .cap-nav-link {
+    position: relative;
+    width: 100%;
+    min-height: 52px;
+    padding: 14px 16px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(151, 174, 225, 0.10);
+    color: #dbe4f5;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    text-align: left;
+    transition: background 0.2s ease, border-color 0.2s ease,
+                transform 0.2s ease, color 0.2s ease;
+  }
+
+  .cap-nav-link:hover,
+  .cap-nav-link:focus-visible {
+    background: rgba(79, 140, 255, 0.10);
+    border-color: rgba(79, 140, 255, 0.28);
+    color: #ffffff;
+    transform: none;
+  }
+
+  .cap-nav-link::before {
+    display: none; /* kill the desktop hover-gradient pill */
+  }
+
+  .cap-nav-link.active {
+    color: #ffffff;
+    background: linear-gradient(
+      115deg,
+      rgba(79, 140, 255, 0.20),
+      rgba(124, 92, 255, 0.14)
+    );
+    border-color: rgba(79, 140, 255, 0.42);
+    box-shadow: 0 8px 22px -12px rgba(79, 140, 255, 0.55);
+  }
+
+  /* Left accent bar on active */
+  .cap-nav-link.active::after {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 12px;
+    bottom: 12px;
+    width: 3px;
+    border-radius: 3px;
+    background: linear-gradient(180deg, #4f8cff, #7c5cff);
+    box-shadow: 0 0 10px rgba(79, 140, 255, 0.7);
+    display: block;
+  }
+
+  /* Chevron column — right aligned, spaced from text */
+  .cap-caret {
+    flex: 0 0 auto;
+    width: 28px;
+    height: 28px;
+    display: grid;
+    place-items: center;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(151, 174, 225, 0.14);
+    color: #b6c4dd;
+    font-size: 0.72rem;
+    opacity: 1;
+    transition: transform 0.28s ease, background 0.2s ease,
+                color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .cap-dropdown.open .cap-caret {
+    transform: rotate(180deg);
+    background: rgba(79, 140, 255, 0.18);
+    border-color: rgba(79, 140, 255, 0.38);
+    color: #ffffff;
+  }
+
+  .cap-dropdown.open > .cap-dropdown-toggle {
+    background: rgba(79, 140, 255, 0.14);
+    border-color: rgba(79, 140, 255, 0.32);
+    color: #ffffff;
+  }
+
+  /* ---------- Accordion panel ---------- */
+  .cap-dropdown-menu {
+    position: static;
+    width: 100%;
+    padding: 0 6px;
+    margin-top: 0;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.025);
+    box-shadow: none;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: none;
+    transition: max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                padding 0.28s ease, margin 0.28s ease,
+                border-color 0.28s ease;
+  }
+
+  .cap-dropdown.open .cap-dropdown-menu {
+    max-height: 1000px;
+    padding: 8px 6px;
+    margin-top: 8px;
+    border-color: rgba(151, 174, 225, 0.14);
+  }
+
+  .cap-dd-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 12px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    transition: background 0.18s ease, border-color 0.18s ease;
+  }
+
+  .cap-dd-item:hover,
+  .cap-dd-item:focus-visible {
+    background: rgba(79, 140, 255, 0.10);
+    border-color: rgba(79, 140, 255, 0.22);
+  }
+
+  .cap-dd-icon {
+    flex: 0 0 38px;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    font-size: 1rem;
+  }
+
+  .cap-dd-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #e8eeff;
+  }
+
+  .cap-dd-desc {
+    font-size: 0.76rem;
+    color: #94a3c0;
+    margin-top: 3px;
+    line-height: 1.4;
+  }
+
+  /* ---------- Drawer footer ---------- */
+  .cap-menu-foot {
+    margin-top: auto;
+    padding-top: 18px;
+    border-top: 1px solid rgba(151, 174, 225, 0.12);
+  }
+
+  .cap-account-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .cap-user-indicator {
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(52, 211, 153, 0.22);
+    background: rgba(16, 185, 129, 0.08);
+    color: #d1fae5;
+  }
+
+  .cap-account-actions .cap-nav-btn,
+  .cap-account-actions .cap-login-link {
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
+    text-align: center;
+    box-sizing: border-box;
+    min-height: 48px;
+    border-radius: 12px;
+    font-size: 0.94rem;
+  }
+
+  .cap-login-link {
+    background: linear-gradient(135deg, #4f8cff, #705cff);
+    border: 1px solid rgba(79, 140, 255, 0.45);
+    color: #ffffff;
+    font-weight: 700;
+    box-shadow: 0 10px 26px -12px rgba(79, 140, 255, 0.55);
+  }
+
+  .cap-login-link:hover {
+    background: linear-gradient(135deg, #5c97ff, #7c6cff);
+    border-color: rgba(139, 166, 255, 0.45);
+    color: #ffffff;
+    transform: translateY(-1px);
+  }
+
+  .cap-logout-btn {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(151, 174, 225, 0.18);
+    color: #e8eeff;
+    box-shadow: none;
+  }
+
+  .cap-logout-btn:hover {
+    background: rgba(248, 113, 113, 0.10);
+    border-color: rgba(248, 113, 113, 0.35);
+    color: #fecaca;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   Small phones — tighten further
+   --------------------------------------------------------------------- */
+@media (max-width: 480px) {
+
+  .cap-menu {
+    width: min(360px, 94vw);
+    padding: 14px 12px max(16px, env(safe-area-inset-bottom));
+  }
+
+  .cap-nav-link {
+    min-height: 48px;
+    padding: 12px 14px;
+    font-size: 0.92rem;
+  }
+
+  .cap-caret {
+    width: 26px;
+    height: 26px;
+    font-size: 0.68rem;
+  }
+
+  .cap-menu-title {
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+  }
+
+  .cap-dd-title {
+    font-size: 0.86rem;
+  }
+
+  .cap-dd-desc {
+    font-size: 0.72rem;
+  }
+
+  .cap-account-actions .cap-nav-btn,
+  .cap-account-actions .cap-login-link {
+    min-height: 46px;
+    font-size: 0.9rem;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   Reduced motion
+   --------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .cap-menu-brand-dot {
+    animation: none !important;
+  }
+}
+@media (max-width: 991.98px) {
+  .cap-dropdown:hover .cap-dropdown-menu {
+    max-height: 0;
+    margin-top: 0;
+    padding: 0 6px;
+  }
+  .cap-dropdown.open .cap-dropdown-menu,
+  .cap-dropdown.open:hover .cap-dropdown-menu {
+    max-height: 1000px;
+    padding: 8px 6px;
+    margin-top: 8px;
+    border-color: rgba(151, 174, 225, 0.14);
+  }
+}
+@media (max-width: 991.98px) {
+  /* Make sure sticky hover never blocks a tap-open */
+  .cap-dropdown:hover .cap-dropdown-menu {
+    max-height: 0;
+    padding: 0 6px;
+    margin-top: 0;
+  }
+
+  .cap-dropdown.open .cap-dropdown-menu,
+  .cap-dropdown.open:hover .cap-dropdown-menu {
+    max-height: 1000px;
+    padding: 8px 6px;
+    margin-top: 8px;
+    border-color: rgba(151, 174, 225, 0.14);
+  }
+
+  /* Make the whole row clearly tappable */
+  .cap-dropdown-toggle {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  /* Nudge the caret to signal interactivity */
+  .cap-dropdown-toggle .cap-caret {
+    pointer-events: none;
+  }
+}

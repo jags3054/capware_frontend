@@ -1,0 +1,52 @@
+.cap-ai-root{--ai:#6657e8;--ai2:#8c65f7;--text:#172033;--muted:#748096;--border:#e7eaf2;position:relative;z-index:1200;font-family:inherit}.cap-ai-panel{position:fixed;right:24px;bottom:96px;width:min(410px,calc(100vw - 28px));height:min(650px,calc(100dvh - 125px));min-height:400px;display:flex;flex-direction:column;overflow:hidden;color:var(--text);background:#fff;border:1px solid #7882a040;border-radius:22px;box-shadow:0 24px 80px #1418373d;animation:capAiIn .18s ease-out}@keyframes capAiIn{from{opacity:0;transform:translateY(10px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}.cap-ai-header{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px;color:#fff;background:linear-gradient(125deg,#5143d9,#7b50e8 60%,#a45ff1)}.cap-ai-brand{display:flex;align-items:center;gap:11px;min-width:0}.cap-ai-logo{display:grid;place-items:center;width:42px;height:42px;flex-shrink:0;border:1px solid #ffffff52;border-radius:14px;background:#ffffff29;font-size:1.25rem}.cap-ai-brand>div:last-child{display:flex;flex-direction:column;gap:4px}.cap-ai-brand strong{font-size:1rem}.cap-ai-brand span{display:flex;align-items:center;gap:6px;font-size:.76rem;opacity:.88}.cap-ai-online-dot{width:7px;height:7px;border-radius:50%;background:#67f0b1}.cap-ai-header-actions{display:flex;gap:3px}.cap-ai-header-actions button{display:grid;place-items:center;width:31px;height:34px;border:0;border-radius:9px;color:#fff;background:transparent;cursor:pointer}.cap-ai-header-actions button:hover,.cap-ai-header-actions button:focus-visible{background:#ffffff2e}.cap-ai-header-actions button:disabled{opacity:.45;cursor:not-allowed}.cap-ai-subheader{display:flex;align-items:center;gap:8px;padding:9px 14px;color:#646f83;background:#f7f8fc;border-bottom:1px solid var(--border);font-size:.72rem;line-height:1.45}.cap-ai-subheader i{color:var(--ai)}.cap-ai-messages{flex:1;min-height:0;overflow-y:auto;display:flex;flex-direction:column;gap:16px;padding:18px 14px;background:radial-gradient(circle at 100% 0%,#8067f20e,transparent 35%),#fff;scroll-behavior:smooth}.cap-ai-message{display:flex;align-items:flex-end;gap:8px;max-width:100%}.cap-ai-message.is-user{justify-content:flex-end}.cap-ai-message-avatar{display:grid;place-items:center;width:27px;height:27px;flex-shrink:0;color:var(--ai);background:#f0edff;border-radius:9px}.cap-ai-bubble{max-width:84%;padding:11px 13px;border-radius:15px 15px 15px 5px;color:#2d3548;background:#f1f3f9;font-size:.88rem;line-height:1.62;white-space:pre-wrap;overflow-wrap:anywhere}.cap-ai-message.is-user .cap-ai-bubble{color:#fff;background:linear-gradient(135deg,#6252e5,#8154e9);border-radius:15px 15px 5px 15px}.cap-ai-typing{display:flex;align-items:center;gap:5px;min-width:58px;padding:15px}.cap-ai-typing span,.cap-ai-dots i{display:block;width:6px;height:6px;border-radius:50%;background:#8d83d8;animation:capAiPulse 1s infinite ease-in-out}.cap-ai-typing span:nth-child(2),.cap-ai-dots i:nth-child(2){animation-delay:.15s}.cap-ai-typing span:nth-child(3),.cap-ai-dots i:nth-child(3){animation-delay:.3s}@keyframes capAiPulse{0%,60%,100%{opacity:.35;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}.cap-ai-loading-history{display:flex;align-items:center;gap:9px;color:var(--muted);font-size:.78rem}.cap-ai-dots{display:inline-flex;gap:3px}.cap-ai-error{display:flex;align-items:flex-start;gap:8px;margin:0 12px 8px;padding:10px 12px;color:#a63242;background:#fff0f1;border:1px solid #ffdadd;border-radius:10px;font-size:.78rem;line-height:1.45}.cap-ai-composer{display:flex;align-items:flex-end;gap:10px;margin:0;padding:12px;border-top:1px solid var(--border);background:#fff}.cap-ai-composer textarea{display:block;flex:1;min-width:0;max-height:110px;min-height:43px;resize:vertical;padding:12px 13px;border:1px solid #e1e4ef;border-radius:14px;outline:none;color:#172033;background:#fafbfe;font:inherit;font-size:.86rem;line-height:1.45}.cap-ai-composer textarea:focus{border-color:#8879ef;box-shadow:0 0 0 3px #6657e81c}.cap-ai-composer button{display:grid;place-items:center;width:43px;height:43px;flex-shrink:0;border:0;border-radius:13px;color:#fff;background:linear-gradient(135deg,#6252e5,#8154e9);font-size:1.2rem;cursor:pointer}.cap-ai-composer button:disabled{opacity:.4;cursor:not-allowed}.cap-ai-footer{padding:0 12px 11px;text-align:center;color:#8b93a4;background:#fff;font-size:.68rem}.cap-ai-launcher{position:fixed;right:25px;bottom:24px;z-index:1201;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-width:62px;height:58px;padding:0 20px;border:0;border-radius:999px;color:#fff;background:linear-gradient(125deg,#5143d9,#8b53ed);box-shadow:0 12px 32px #5b46dc61;font:inherit;font-size:.92rem;font-weight:700;cursor:pointer;transition:transform .16s ease,box-shadow .16s ease}.cap-ai-launcher:hover{transform:translateY(-2px);box-shadow:0 16px 38px #5b46dc70}.cap-ai-launcher i{font-size:1.25rem}.cap-ai-launcher.is-open{min-width:52px;width:52px;height:52px;padding:0}@media(max-width:480px){.cap-ai-panel{right:10px;bottom:80px;width:calc(100vw - 20px);height:min(620px,calc(100dvh - 100px));min-height:360px;border-radius:18px}.cap-ai-launcher{right:15px;bottom:15px;height:54px;padding:0 17px}.cap-ai-header{padding:13px 11px}.cap-ai-header-actions{gap:0}.cap-ai-header-actions button{width:28px}}@media(prefers-reduced-motion:reduce){.cap-ai-panel,.cap-ai-launcher,.cap-ai-typing span,.cap-ai-dots i{animation:none;transition:none}}
+
+/* Capware AI v2 enhancements — Bootstrap-compatible, no utility framework. */
+.cap-ai-toolbar{display:flex;align-items:center;gap:8px;padding:8px 14px;border-bottom:1px solid #e8eaf0;background:#fff;font-size:12px;color:#667085}
+.cap-ai-toolbar select{max-width:115px;border:1px solid #d9deea;border-radius:8px;padding:5px 7px;background:#fff;color:#344054;font-size:12px}
+.cap-ai-toolbar button,.cap-ai-message-tools button{border:0;background:transparent;color:#5b45c6;font-size:12px;cursor:pointer}
+.cap-ai-toolbar button{margin-left:auto;white-space:nowrap}
+.cap-ai-message-stack{max-width:calc(100% - 36px);min-width:0}
+.cap-ai-message-tools{display:flex;gap:12px;margin:5px 4px 0;flex-wrap:wrap}
+.cap-ai-message-tools button{padding:0;font-size:11px;color:#7b8498}
+.cap-ai-sources{margin:5px 4px 0;color:#6b7280;font-size:10px;line-height:1.4}
+.cap-ai-quick-prompts{display:flex;flex-wrap:wrap;gap:7px;padding:0 12px 12px}
+.cap-ai-quick-prompts button{border:1px solid #ded9fa;border-radius:14px;background:#fff;color:#5540b5;padding:7px 10px;font-size:11px;text-align:left}
+.cap-ai-quick-prompts button:hover{background:#f6f3ff}
+.cap-ai-lead-form{padding:12px;background:#f8f7ff;border-bottom:1px solid #e6e2fb;display:grid;gap:8px}
+.cap-ai-lead-form>strong{font-size:13px;color:#252044}
+.cap-ai-lead-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.cap-ai-lead-form input:not([type=checkbox]),.cap-ai-lead-form select,.cap-ai-lead-form textarea{width:100%;min-width:0;border:1px solid #d9d7e8;border-radius:8px;background:#fff;padding:8px 9px;font-size:12px;outline:none}
+.cap-ai-lead-form input:focus,.cap-ai-lead-form select:focus,.cap-ai-lead-form textarea:focus{border-color:#7866dc;box-shadow:0 0 0 2px #7866dc20}
+.cap-ai-consent{display:flex;align-items:flex-start;gap:7px;font-size:11px;color:#5b6476}
+.cap-ai-consent input{margin-top:2px}
+.cap-ai-lead-submit{border:0;border-radius:8px;background:#5b45c6;color:#fff;padding:9px;font-size:12px;font-weight:600}
+.cap-ai-lead-status{font-size:11px;margin:0;color:#344054}
+.cap-ai-footer a{color:inherit;text-decoration:underline;margin-left:4px}
+@media(max-width:480px){.cap-ai-panel{right:10px!important;bottom:76px!important;width:calc(100vw - 20px)!important;height:min(680px,calc(100vh - 100px))!important}.cap-ai-lead-grid{grid-template-columns:1fr}.cap-ai-toolbar{gap:5px;padding:8px}.cap-ai-toolbar select{max-width:88px}}
+.message-content p {
+  margin-bottom: 8px;
+}
+
+.message-content p:last-child {
+  margin-bottom: 0;
+}
+
+.message-content strong {
+  font-weight: 700;
+}
+
+.message-content ul,
+.message-content ol {
+  padding-left: 20px;
+  margin: 8px 0;
+}
+
+.message-content li {
+  margin-bottom: 4px;
+}
+
+.message-content a {
+  color: #0d6efd;
+  text-decoration: underline;
+  overflow-wrap: anywhere;
+}
